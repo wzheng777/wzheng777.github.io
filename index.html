@@ -1,285 +1,415 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wei Zheng - Professional Software Engineer</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <title>Wei Zheng | Professional Software Engineer</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+        :root {
+            --primary-color: #64ffda; /* Vibrant Cyan */
+            --primary-light: #a7ffea;
+            --primary-dark: #1de9b6;
+            --secondary-color: #101827; /* Dark Navy Blue - Main BG */
+            --text-color: #ccd6f6; /* Light Slate - Main Text */
+            --light-text-color: #8892b0; /* Lighter Slate - Secondary Text */
+            --background-color: #112240; /* Lighter Navy - Card BG */
+            --card-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            --card-radius: 8px;
+            --border-color: #233554;
+        }
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: #111827; /* Dark blue-gray background */
-            color: #d1d5db; /* Light gray text */
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+            line-height: 1.6;
         }
-        .material-symbols-outlined {
-            font-variation-settings:
-            'FILL' 0,
-            'wght' 400,
-            'GRAD' 0,
-            'opsz' 24;
-            vertical-align: middle;
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
         }
-        .glassmorphism {
-            background: rgba(31, 41, 55, 0.5); /* Semi-transparent dark card */
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+        /* Header */
+        .header {
+            background-color: var(--background-color);
+            text-align: center;
+            padding: 40px 20px;
+            border-bottom: 1px solid var(--border-color);
+            border-radius: var(--card-radius);
+            box-shadow: var(--card-shadow);
+            margin-bottom: 30px;
         }
-        .skill-tag {
-            background-color: #374151; /* Gray-700 */
-            color: #d1d5db; /* Gray-300 */
-            padding: 0.25rem 0.75rem;
-            border-radius: 9999px;
-            font-size: 0.875rem;
-            font-weight: 500;
-            transition: all 0.2s ease-in-out;
-        }
-        .skill-tag:hover {
-            background-color: #4f46e5; /* Indigo-600 */
-            color: #ffffff;
-        }
-        .section-heading {
-            display: flex;
-            align-items: center;
-            font-size: 2.25rem;
+        .header h1 {
+            margin: 0;
+            font-size: 2.8rem;
             font-weight: 700;
-            color: #ffffff;
-            margin-bottom: 2rem;
+            color: var(--text-color);
         }
-        .section-heading .material-symbols-outlined {
-            font-size: 2.5rem;
-            margin-right: 0.75rem;
-            color: #4f46e5;
+        .header .title {
+            font-size: 1.3rem;
+            color: var(--primary-color);
+            margin-top: 5px;
+            font-weight: 400;
+        }
+        .contact-info {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+        .contact-info a, .contact-info span {
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s;
+        }
+        .contact-info a:hover {
+            color: var(--primary-color);
+        }
+        /* Main Section */
+        main {
+            padding: 0;
+        }
+        .section {
+            background-color: var(--background-color);
+            margin-bottom: 25px;
+            padding: 30px;
+            border-radius: var(--card-radius);
+            box-shadow: var(--card-shadow);
+        }
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 500;
+            color: var(--text-color);
+            margin-top: 0;
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 10px;
+        }
+        /* About Section */
+        .about-text p {
+            font-size: 1.1rem;
+            color: var(--light-text-color);
+            margin: 10px 0;
+        }
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .skill-category h4 {
+            margin-bottom: 10px;
+            font-weight: 500;
+            color: var(--text-color);
+        }
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+        .skill-item {
+            background-color: #233554;
+            color: var(--text-color);
+            padding: 6px 12px;
+            border-radius: 16px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            border: 1px solid #303C55;
+        }
+        /* Experience Section */
+        .job {
+            border-left: 3px solid var(--primary-color);
+            padding-left: 20px;
+            margin-bottom: 30px;
+        }
+        .job:last-child {
+            margin-bottom: 0;
+        }
+        .job-header {
+            margin-bottom: 10px;
+        }
+        .job-title {
+            font-size: 1.25rem;
+            font-weight: 500;
+            margin: 0;
+            color: var(--text-color);
+        }
+        .job-company {
+            font-size: 1.1rem;
+            font-weight: 400;
+            color: var(--primary-color);
+        }
+        .job-date {
+            font-size: 0.95rem;
+            color: var(--light-text-color);
+            font-style: italic;
+        }
+        .job-details {
+            list-style-type: disc;
+            padding-left: 20px;
+            margin: 0;
+        }
+        .job-details li {
+            margin-bottom: 8px;
+            color: var(--light-text-color);
+        }
+        /* Education & Volunteer Section */
+        .grid-layout {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
+        }
+        @media (min-width: 768px) {
+            .grid-layout {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        .edu-item, .vol-item {
+            background-color: transparent;
+            padding: 20px;
+            border-radius: var(--card-radius);
+            border: 1px solid var(--border-color);
+        }
+        .item-title {
+            margin: 0 0 5px 0;
+            font-weight: 500;
+            color: var(--text-color);
+        }
+        .item-subtitle, .item-date {
+            margin: 0;
+            color: var(--light-text-color);
+            font-size: 0.95rem;
+        }
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9rem;
+            color: var(--light-text-color);
         }
     </style>
 </head>
-<body class="antialiased">
+<body>
 
-    <!-- Header -->
-    <header class="bg-gray-900/80 backdrop-blur-sm sticky top-0 z-50">
-        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#" class="text-2xl font-bold text-white">Wei Zheng</a>
-            <div class="hidden md:flex space-x-6 text-lg">
-                <a href="#about" class="text-gray-300 hover:text-indigo-400 transition">About</a>
-                <a href="#skills" class="text-gray-300 hover:text-indigo-400 transition">Skills</a>
-                <a href="#experience" class="text-gray-300 hover:text-indigo-400 transition">Experience</a>
-                <a href="#projects" class="text-gray-300 hover:text-indigo-400 transition">Projects</a>
-                <a href="#contact" class="text-gray-300 hover:text-indigo-400 transition">Contact</a>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>Wei Zheng</h1>
+            <p class="title">Professional Software Engineer (P.Eng)</p>
+            <div class="contact-info">
+                <a href="mailto:weizheng777@gmail.com">weizheng777@gmail.com</a>
+                <span>•</span>
+                <a href="tel:778-878-2297">778-878-2297</a>
+                <span>•</span>
+                <span>Langley, BC</span>
             </div>
-            <button id="mobile-menu-button" class="md:hidden text-white">
-                <span class="material-symbols-outlined">menu</span>
-            </button>
-        </nav>
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4">
-            <a href="#about" class="block py-2 text-gray-300 hover:text-indigo-400 transition">About</a>
-            <a href="#skills" class="block py-2 text-gray-300 hover:text-indigo-400 transition">Skills</a>
-            <a href="#experience" class="block py-2 text-gray-300 hover:text-indigo-400 transition">Experience</a>
-            <a href="#projects" class="block py-2 text-gray-300 hover:text-indigo-400 transition">Projects</a>
-            <a href="#contact" class="block py-2 text-gray-300 hover:text-indigo-400 transition">Contact</a>
-        </div>
-    </header>
+        </header>
 
-    <main class="container mx-auto px-6 py-12 md:py-20">
-
-        <!-- About Section -->
-        <section id="about" class="min-h-[80vh] flex flex-col md:flex-row items-center justify-center text-center md:text-left">
-            <div class="md:w-2/3">
-                <h1 class="text-4xl md:text-6xl font-bold text-white leading-tight">Wei Zheng, P.Eng</h1>
-                <p class="text-xl md:text-2xl text-indigo-400 font-semibold mt-2">Professional Software Engineer</p>
-                <p class="mt-6 text-lg max-w-3xl leading-relaxed">
-                    With over 16 years of dedicated experience in software development, I specialize in crafting end-to-end solutions across a diverse range of platforms. As an expert in object-oriented programming and cross-platform development (PC, Mac, iOS, Android), I excel at building efficient, scalable, and user-centric applications. I thrive in both independent and collaborative settings, leveraging strong problem-solving skills to deliver high-quality projects on time.
-                </p>
-                <div class="mt-8 flex justify-center md:justify-start space-x-4">
-                     <a href="#contact" class="bg-indigo-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-indigo-700 transition transform hover:scale-105 shadow-lg">Get In Touch</a>
-                     <a href="#projects" class="bg-gray-700 text-white font-bold py-3 px-6 rounded-lg hover:bg-gray-600 transition transform hover:scale-105 shadow-lg">View My Work</a>
+        <main>
+            <!-- About Section -->
+            <section id="about" class="section">
+                <h2 class="section-title">About Me</h2>
+                <div class="about-text">
+                    <p>
+                        A certified Professional Software Engineer (P.Eng) with over 15 years of comprehensive experience delivering robust, end-to-end software solutions across Web, Android, iOS, Mac, and Windows platforms.
+                    </p>
+                    <p>
+                        Demonstrated ability to excel both independently and in collaborative team environments, applying strong problem-solving and time management skills to ensure efficient project execution. Passionate about fostering team growth and technical excellence through mentorship of junior engineers.
+                    </p>
                 </div>
+            </section>
+
+            <!-- Technical Skills Section -->
+            <section id="skills" class="section">
+                <h2 class="section-title">Technical Skills</h2>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h4>Languages</h4>
+                        <ul class="skill-list">
+                            <li class="skill-item">Java</li>
+                            <li class="skill-item">JavaScript</li>
+                            <li class="skill-item">Python</li>
+                            <li class="skill-item">C/C++</li>
+                            <li class="skill-item">C#</li>
+                            <li class="skill-item">Objective-C</li>
+                            <li class="skill-item">PHP</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h4>Cloud & DevOps</h4>
+                        <ul class="skill-list">
+                            <li class="skill-item">AWS</li>
+                            <li class="skill-item">Kubernetes</li>
+                            <li class="skill-item">Docker</li>
+                            <li class="skill-item">Jenkins</li>
+                            <li class="skill-item">Puppet</li>
+                            <li class="skill-item">CI/CD</li>
+                            <li class="skill-item">Grafana</li>
+                            <li class="skill-item">InfluxDB</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h4>Frameworks & Platforms</h4>
+                        <ul class="skill-list">
+                            <li class="skill-item">React/React Native</li>
+                            <li class="skill-item">Node.js</li>
+                            <li class="skill-item">jQuery</li>
+                            <li class="skill-item">Bootstrap</li>
+                            <li class="skill-item">Express.js</li>
+                            <li class="skill-item">Redux</li>
+                            <li class="skill-item">Netty</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h4>Tools & Integrations</h4>
+                        <ul class="skill-list">
+                            <li class="skill-item">Git</li>
+                            <li class="skill-item">Android Studio</li>
+                            <li class="skill-item">Xcode</li>
+                            <li class="skill-item">Visual Studio</li>
+                            <li class="skill-item">RESTful API</li>
+                            <li class="skill-item">GraphQL</li>
+                            <li class="skill-item">TomTom SDK</li>
+                            <li class="skill-item">Firebase</li>
+                             <li class="skill-item">Keycloak</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Professional Experience Section -->
+            <section id="experience" class="section">
+                <h2 class="section-title">Professional Experience</h2>
+                 <div class="job">
+                    <div class="job-header">
+                        <h3 class="job-title">Senior Software Engineer (Contact)</h3>
+                        <p class="job-company">A.T.S Electro-Lube International Inc. • Delta, BC</p>
+                        <p class="job-date">March 2022 - Present</p>
+                    </div>
+                    <ul class="job-details">
+                        <li>Enhanced an existing Lube management Android app using C#/Xamarin to integrate new features and generate statistical data.</li>
+                        <li>Refactored Bluetooth Low Energy (BLE) implementation to improve connection stability and data throughput.</li>
+                        <li>Developed JavaScript functions in the Datacake cloud platform to collect and visualize mobile app data via charts.</li>
+                    </ul>
+                </div>
+                <div class="job">
+                    <div class="job-header">
+                        <h3 class="job-title">Software Engineer</h3>
+                        <p class="job-company">Rx Networks Inc. • Vancouver, BC</p>
+                        <p class="job-date">January 2020 - April 2024</p>
+                    </div>
+                    <ul class="job-details">
+                        <li>Developed and tested an Android NTRIP Client library in C++, leading to a partnership with Qualcomm and setting a new industry standard for location accuracy.</li>
+                        <li>Engineered Identity and Access Management (IAM) solutions with Keycloak to enhance user management and security.</li>
+                        <li>Built a scalable NTRIP Caster using Java Netty's NIO framework, supporting 10,000 concurrent connections.</li>
+                        <li>Automated data processing workflows using Python, NumPy, and Pandas for visualization in Grafana with InfluxDB.</li>
+                    </ul>
+                </div>
+
+                <div class="job">
+                    <div class="job-header">
+                        <h3 class="job-title">Senior Software Developer</h3>
+                        <p class="job-company">DDS Wireless International Inc. • Richmond, BC</p>
+                        <p class="job-date">January 2019 - 2020</p>
+                    </div>
+                    <ul class="job-details">
+                        <li>Designed and built an end-to-end taxi and paratransit platform using React Native for both Android and iOS.</li>
+                        <li>Developed a React Native map component with TomTom's map SDK, implementing turn-by-turn navigation.</li>
+                        <li>Mentored junior software developers in React Native, providing guidance on best practices and project structure.</li>
+                    </ul>
+                </div>
+
+                <div class="job">
+                    <div class="job-header">
+                        <h3 class="job-title">Mobile Software/Firmware Developer</h3>
+                        <p class="job-company">DDS Wireless International Inc. • Richmond, BC</p>
+                        <p class="job-date">July 2014 - Dec 2018</p>
+                    </div>
+                    <ul class="job-details">
+                        <li>Maintained and enhanced a jQuery-based digital dispatch system on Android.</li>
+                        <li>Established an automated testing framework using Jenkins, Robotium, and Sikuli to streamline QA processes.</li>
+                        <li>Contributed to the customization of Android OS for specialized hardware, including U-Boot, USB drivers, and OTA packages from AOSP.</li>
+                    </ul>
+                </div>
+                
+                <div class="job">
+                    <div class="job-header">
+                        <h3 class="job-title">Software Developer</h3>
+                        <p class="job-company">Ensemble System Inc. • Richmond, BC</p>
+                        <p class="job-date">November 2011 - 2014</p>
+                    </div>
+                    <ul class="job-details">
+                        <li>Developed a native iOS restaurant rating and search app and a video streaming iOS app using Objective-C.</li>
+                        <li>Contributed to a hotel web application using Node.js and Express.js.</li>
+                        <li>Engineered a video streaming app for Windows 8 tablets using C#, JavaScript, HTML5, and CSS.</li>
+                    </ul>
+                </div>
+
+                <div class="job">
+                    <div class="job-header">
+                        <h3 class="job-title">Mobile Developer</h3>
+                        <p class="job-company">TBA Digital Inc. • Vancouver, BC</p>
+                        <p class="job-date">February 2011 - November 2011</p>
+                    </div>
+                    <ul class="job-details">
+                        <li>Worked on the development and maintenance of mobile applications for Android and iOS platforms.</li>
+                    </ul>
+                </div>
+
+                <div class="job">
+                    <div class="job-header">
+                        <h3 class="job-title">Software Developer</h3>
+                        <p class="job-company">Kodak Graphic Communications Canada Company • Burnaby, BC</p>
+                        <p class="job-date">October 2007 - November 2009</p>
+                    </div>
+                    <ul class="job-details">
+                        <li>Developed key features for Prinergy Evo in C++, including Color Flow technology integration and a new Report Demand feature.</li>
+                        <li>Designed and implemented a new build script for the Prinergy System using Perl.</li>
+                        <li>Resolved critical bugs and documented the design and implementation of new features.</li>
+                    </ul>
+                </div>
+
+            </section>
+
+            <div class="grid-layout">
+                <!-- Education Section -->
+                <section id="education" class="section">
+                    <h2 class="section-title">Education</h2>
+                    <div class="edu-item">
+                        <h3 class="item-title">Bachelor of Computer Engineering</h3>
+                        <p class="item-subtitle">University of Victoria</p>
+                        <p class="item-date">2005 - 2007</p>
+                    </div>
+                     <div class="edu-item" style="margin-top: 15px;">
+                        <h3 class="item-title">Electronics Engineering Technology Diploma</h3>
+                        <p class="item-subtitle">British Columbia Institute of Technology</p>
+                        <p class="item-date">2000 - 2002</p>
+                    </div>
+                </section>
+
+                <!-- Volunteer Section -->
+                <section id="volunteer" class="section">
+                    <h2 class="section-title">Volunteer Work</h2>
+                    <div class="vol-item">
+                        <h3 class="item-title">Member of Squadron Sponsoring Committee (SSC)</h3>
+                        <p class="item-subtitle">583 Air Cadets, Maple Ridge</p>
+                        <p class="item-date">2024 - Present</p>
+                    </div>
+                </section>
             </div>
-        </section>
+        </main>
 
-        <!-- Skills Section -->
-        <section id="skills" class="py-20">
-            <h2 class="section-heading"><span class="material-symbols-outlined">code</span>Technical Skills</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="glassmorphism rounded-xl p-6">
-                    <h3 class="text-xl font-bold text-white mb-4">Languages</h3>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="skill-tag">Java</span>
-                        <span class="skill-tag">JavaScript</span>
-                        <span class="skill-tag">Python</span>
-                        <span class="skill-tag">C/C++</span>
-                        <span class="skill-tag">C#</span>
-                        <span class="skill-tag">Objective-C</span>
-                    </div>
-                </div>
-                <div class="glassmorphism rounded-xl p-6">
-                    <h3 class="text-xl font-bold text-white mb-4">Cloud & DevOps</h3>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="skill-tag">AWS</span>
-                        <span class="skill-tag">Kubernetes</span>
-                        <span class="skill-tag">Docker</span>
-                        <span class="skill-tag">Jenkins</span>
-                        <span class="skill-tag">Puppet</span>
-                    </div>
-                </div>
-                <div class="glassmorphism rounded-xl p-6">
-                    <h3 class="text-xl font-bold text-white mb-4">Frameworks & Platforms</h3>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="skill-tag">React Native</span>
-                        <span class="skill-tag">Node.js</span>
-                        <span class="skill-tag">Express.js</span>
-                        <span class="skill-tag">jQuery</span>
-                        <span class="skill-tag">Netty</span>
-                        <span class="skill-tag">Bootstrap</span>
-                    </div>
-                </div>
-                 <div class="glassmorphism rounded-xl p-6 md:col-span-2 lg:col-span-3">
-                    <h3 class="text-xl font-bold text-white mb-4">Tools & Environments</h3>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="skill-tag">Git</span>
-                        <span class="skill-tag">Android Studio</span>
-                        <span class="skill-tag">IntelliJ IDEA</span>
-                        <span class="skill-tag">Eclipse</span>
-                        <span class="skill-tag">Visual Studio</span>
-                        <span class="skill-tag">XCode</span>
-                        <span class="skill-tag">NetBeans</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Experience Section -->
-        <section id="experience" class="py-20">
-            <h2 class="section-heading"><span class="material-symbols-outlined">work</span>Professional Experience</h2>
-            <div class="relative border-l-2 border-gray-700 ml-4">
-                <!-- Rx Networks -->
-                <div class="mb-10 ml-8">
-                    <span class="absolute flex items-center justify-center w-8 h-8 bg-indigo-600 rounded-full -left-4 ring-4 ring-gray-900">
-                        <span class="material-symbols-outlined text-white">satellite_alt</span>
-                    </span>
-                    <h3 class="flex items-center mb-1 text-xl font-semibold text-white">Software Engineer <span class="text-indigo-400 text-sm font-medium ml-2 px-2.5 py-0.5 rounded-full">Rx Networks Inc.</span></h3>
-                    <time class="block mb-2 text-sm font-normal leading-none text-gray-400">Jan 2020 - Apr 2024</time>
-                    <p class="mb-4 text-base font-normal">Enhanced system security and performance through developing IAM solutions with Keycloak and a high-capacity NTRIP Caster using Netty. Improved real-time geolocation services with Java/Maven and optimized deployments with Kubernetes. Led the development of an Android NTRIP Client in C++, resulting in a key partnership with Qualcomm.</p>
-                </div>
-                <!-- DDS Wireless -->
-                <div class="mb-10 ml-8">
-                    <span class="absolute flex items-center justify-center w-8 h-8 bg-indigo-600 rounded-full -left-4 ring-4 ring-gray-900">
-                        <span class="material-symbols-outlined text-white">directions_car</span>
-                    </span>
-                    <h3 class="flex items-center mb-1 text-xl font-semibold text-white">Senior Software Developer <span class="text-indigo-400 text-sm font-medium ml-2 px-2.5 py-0.5 rounded-full">DDS Wireless</span></h3>
-                    <time class="block mb-2 text-sm font-normal leading-none text-gray-400">Jan 2019 - Jan 2020</time>
-                    <p class="mb-4 text-base font-normal">Architected and developed taxi/paratransit hailing and dispatch apps using React Native for Android & iOS. Integrated TomTom map SDK for advanced navigation and mentored junior developers in mobile app development best practices.</p>
-                </div>
-                 <!-- DDS Wireless -->
-                <div class="mb-10 ml-8">
-                    <span class="absolute flex items-center justify-center w-8 h-8 bg-indigo-600 rounded-full -left-4 ring-4 ring-gray-900">
-                        <span class="material-symbols-outlined text-white">smartphone</span>
-                    </span>
-                    <h3 class="flex items-center mb-1 text-xl font-semibold text-white">Mobile/Firmware Developer <span class="text-indigo-400 text-sm font-medium ml-2 px-2.5 py-0.5 rounded-full">DDS Wireless</span></h3>
-                    <time class="block mb-2 text-sm font-normal leading-none text-gray-400">Jul 2014 - Dec 2018</time>
-                    <p class="mb-4 text-base font-normal">Maintained a digital dispatch system using jQuery. Built an automated testing framework with Jenkins. Spearheaded Android OS customizations, including developing custom U-Boot, USB drivers for peripherals, and building the OS from AOSP codebase to meet specialized hardware requirements.</p>
-                </div>
-                <!-- Earlier Roles -->
-                 <div class="mb-10 ml-8">
-                    <span class="absolute flex items-center justify-center w-8 h-8 bg-indigo-600 rounded-full -left-4 ring-4 ring-gray-900">
-                       <span class="material-symbols-outlined text-white">layers</span>
-                    </span>
-                    <h3 class="flex items-center mb-1 text-xl font-semibold text-white">Previous Roles</h3>
-                    <time class="block mb-2 text-sm font-normal leading-none text-gray-400">2007 - 2014</time>
-                    <p class="mb-4 text-base font-normal">Developed a variety of applications including iOS restaurant rating apps, hotel web apps (Node.js), video streaming apps (Objective-C, C#), and enhanced print workflow systems with C++ and Perl at companies like <span class="font-semibold text-gray-300">Ensemble System</span>, <span class="font-semibold text-gray-300">TBA Digital</span>, and <span class="font-semibold text-gray-300">Kodak</span>.</p>
-                </div>
-            </div>
-        </section>
-
-
-        <!-- Projects Section -->
-        <section id="projects" class="py-20">
-             <h2 class="section-heading"><span class="material-symbols-outlined">integration_instructions</span>Projects</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Project 1 -->
-                <div class="glassmorphism rounded-xl p-6 flex flex-col">
-                    <h3 class="text-xl font-bold text-white mb-2">High-Performance GNSS Caster</h3>
-                    <p class="text-gray-400 flex-grow">Engineered a robust NTRIP Caster server using Java and the Netty framework, designed to handle up to 10,000 concurrent connections for real-time geospatial data streaming.</p>
-                    <div class="mt-4 flex flex-wrap gap-2">
-                        <span class="skill-tag">Java</span>
-                        <span class="skill-tag">Netty</span>
-                        <span class="skill-tag">NIO</span>
-                        <span class="skill-tag">Geolocation</span>
-                    </div>
-                </div>
-                <!-- Project 2 -->
-                <div class="glassmorphism rounded-xl p-6 flex flex-col">
-                    <h3 class="text-xl font-bold text-white mb-2">React Native Ride-Hailing App</h3>
-                    <p class="text-gray-400 flex-grow">Architected a cross-platform mobile application for taxi and paratransit services. Features include real-time vehicle tracking, booking, and turn-by-turn navigation using TomTom SDK.</p>
-                     <div class="mt-4 flex flex-wrap gap-2">
-                        <span class="skill-tag">React Native</span>
-                        <span class="skill-tag">Android</span>
-                        <span class="skill-tag">iOS</span>
-                        <span class="skill-tag">TomTom SDK</span>
-                    </div>
-                </div>
-                 <!-- Project 3 -->
-                <div class="glassmorphism rounded-xl p-6 flex flex-col">
-                    <h3 class="text-xl font-bold text-white mb-2">Custom Android OS for In-Vehicle Devices</h3>
-                    <p class="text-gray-400 flex-grow">Led the customization of Android OS from the AOSP codebase for specialized taxi meter hardware. Developed custom bootloaders (U-Boot), kernel drivers, and OTA update packages.</p>
-                     <div class="mt-4 flex flex-wrap gap-2">
-                        <span class="skill-tag">Android (AOSP)</span>
-                        <span class="skill-tag">Firmware</span>
-                        <span class="skill-tag">C/C++</span>
-                        <span class="skill-tag">Embedded Systems</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section id="contact" class="py-20 text-center">
-             <h2 class="section-heading justify-center"><span class="material-symbols-outlined">mail</span>Get In Touch</h2>
-            <p class="max-w-2xl mx-auto text-lg mb-8">I'm always open to discussing new projects, creative ideas, or opportunities to be part of an ambitious team. Feel free to reach out.</p>
-            <div class="flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-8">
-                 <div class="flex items-center text-lg">
-                    <span class="material-symbols-outlined mr-2 text-indigo-400">email</span>
-                    <a href="mailto:weizheng777@gmail.com" class="hover:text-indigo-400">weizheng777@gmail.com</a>
-                </div>
-                <div class="flex items-center text-lg">
-                    <span class="material-symbols-outlined mr-2 text-indigo-400">call</span>
-                    <a href="tel:778-878-2297" class="hover:text-indigo-400">778-878-2297</a>
-                </div>
-                 <div class="flex items-center text-lg">
-                    <span class="material-symbols-outlined mr-2 text-indigo-400">location_on</span>
-                    <span>Langley, BC, Canada</span>
-                </div>
-            </div>
-        </section>
-
-    </main>
-
-    <!-- Footer -->
-    <footer class="bg-gray-900 border-t border-gray-800">
-        <div class="container mx-auto px-6 py-6 text-center text-gray-400">
-            <p>&copy; 2024 Wei Zheng. All Rights Reserved.</p>
-        </div>
-    </footer>
-
-    <script>
-        // Mobile menu toggle
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
-        mobileMenuButton.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-
-        // Close mobile menu when a link is clicked
-        const mobileLinks = mobileMenu.querySelectorAll('a');
-        mobileLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-            });
-        });
-    </script>
+        <footer>
+            <p>&copy; 2025 Wei Zheng. All rights reserved.</p>
+        </footer>
+    </div>
 </body>
 </html>
+
